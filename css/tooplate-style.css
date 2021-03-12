@@ -16,6 +16,10 @@ body {
 
 h1 { font-size: 2.8rem; }
 
+.logout:hover{
+    background-color: #806517;
+}
+
 #tm-bg {
     position: fixed;
     top: 0;
@@ -116,7 +120,7 @@ p {
 }
 
 .product:hover {
-    background: #2c2a35;
+    background: #806517;
     color: #a9a9a9;
 }
 
@@ -127,7 +131,7 @@ p {
 
 /* Expanding Grid Items from Codrops */
 .tm-page-title { font-weight: 500; }
-.content { max-width: 370px; }
+.content { max-width: 370px; margin-left: auto;}
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -331,7 +335,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 767px) {
     .container { max-width: 450px; }
     .content {
-        margin-left: auto;
+        margin-left:auto;
         margin-right: 0;
     }
     .tm-nav ul {
