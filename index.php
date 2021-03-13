@@ -45,6 +45,14 @@
     $categ="";
     $email="";
 
+    $result="";
+    if(isset($_POST['branch'])){
+        $sql = "SELECT * FROM branches";
+        $result = $conn->query($sql);
+        // echo $result;
+        // $conn->close();
+    }
+
     if(isset($_POST['logout'])) //button if clicked
     {
         session_destroy();
@@ -93,6 +101,25 @@
                         After a lot of hussle and months of preparation, you are now finally free and ready to go to college.<br><br>
                         You might be seeking some advice about choice filling.
                         Let us help you to fill in your college preferences. Just fill in all the details, and you will be all set!
+
+
+                        <?php // LOOP TILL END OF DATA
+                        // echo "Avsxc";
+                        // echo $result;
+                        if($result!=null){
+                            while($rows=$result->fetch_assoc())
+                            {
+                            ?>
+                            <tr>
+                                <!--FETCHING DATA FROM EACH
+                                    ROW OF EVERY COLUMN-->
+                                <?php echo $rows['branch_id'];?>
+                                <?php echo $rows['Name'];?>
+                                <?php echo $rows['program_id'];?>
+                            <?php
+                            }
+                        }
+                            ?>
                         <br><br>
                         <form method="POST"><button type="submit" name="logout" class="btn logout"><b>Logout</b></button></form>
 
@@ -319,8 +346,13 @@
                         <br />
                         <br />
                         <p>Write the branch numbers in your preference order using spaces:</p>
+                        
+                        <form method="POST" action="#"><button type="submit" name="branch" class="submit">Show Branch numbers:</button></form>
                         <input type="text" >
+
+
                     </div>
+                    
                   
                                             </div>
                                         </div>       
