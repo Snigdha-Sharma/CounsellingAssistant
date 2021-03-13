@@ -40,7 +40,8 @@ function getUser()
 if(isset($_POST["submit"]))
 {
 	//if($_POST["usertype"]==1)
-	$sql = "SELECT * FROM userlogin WHERE Username='$_POST[user]' AND Password ='$_POST[psw]'";
+    $hashed_password = password_hash($_POST[psw], PASSWORD_DEFAULT);
+	$sql = "SELECT * FROM userlogin WHERE Username='$_POST[user]' AND Password ='$hashed_password'";
 
 	if(!$qsql = mysqli_query($con,$sql))
 	{

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>                       <!-- http://kenwheeler.github.io/slick/ -->
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
     <link rel="stylesheet" href="css/tooplate-style.css">                               <!-- Templatemo style -->
-    <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <link rel="stylesheet" type="text/css" href="css/css_login.css">
     <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
     
 </head>
@@ -104,37 +104,37 @@
     <div id="tm-bg"></div>
                 <fieldset style = "width: 60vw; margin:4vw 20vw ">
                     <form method="post" action='#'>
-                    <button  name="aaa" class="submit family"><a href="index.php" class="white">Go back to home page</a></button><br>
+                    <button  name="aaa" class="btn logout"><a href="index.php" class="white">Go back to home page</a></button><br>
                         <div class="container">
                         <!-- <button type="submit" name="branch" class="submit">Show Branch and Region numbers:</button> -->
                           <h2 id='heading' class="family">Questionnaire for Applicant Priorities</h2><br>
                       
                         <label class="container">
-                            <h5>Do you strictly prefer institutes from your own state?</h5>
+                            <h5>Do you strictly prefer institutes from your own region?</h5>
                             <input type="checkbox" class='container1' name="chk1">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">
-                            <h5>Is placement ranking more important to you than overall NIRF ranking?</h5>
+                            <h5>Do you strictly prefer institutes from your own state?</h5>
                             <input type="checkbox" class='container1' name="chk2">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">
-                            <h5>Is campus ranking more important to you than overall NIRF ranking?</h5>
+                            <h5> If the college is one of the IIT’s this is more important than branch preference - True or False, tick for true.</h5>
                             <input type="checkbox" class='container1' name="chk3">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">
-                            <h5>Is campus ranking more important to you than placement ranking?</h5>
+                            <h5> If the college is one of the NIT’s this is more important than branch preference - True or False, tick for true.</h5>
                             <input type="checkbox" class='container1' name="chk4">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">
-                            <h5>Do you prefer going into a college that is well established(i.e. established previously than other colleges)?</h5>
+                            <h5> If the college is one of the IIIT’s this is more important than branch preference - True or False, tick for true.</h5>
                             <input type="checkbox" class='container1' name="chk5">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container">
+                        <!-- <label class="container">
                             <h5>Do you want branch preference to be given less importance if the institution is an IIT?</h5>
                             <input type="checkbox" class='container1' name="chk6">
                             <span class="checkmark"></span>
@@ -148,7 +148,7 @@
                             <h5>Do you want branch preference to be given less importance if the institution is a IIIT?</h5>
                             <input type="checkbox" class='container1' name="chk8">
                             <span class="checkmark"></span>
-                        </label>
+                        </label> -->
                         <br>
 
                         <label for="dur">Preferred duration?</label><br>

@@ -100,19 +100,21 @@
                       <br><br>
                           <label for="stype"><div class="family">Seat Type</div></label><br>
                           <select name="stype">
-                        <option value="Female Only (Supernumerary)">Female Only (Supernumerary)</option>
-                        <option value="Gender Neutral">Gender Neutral</option>
+                        <option value="Female-only (including Supernumerary)">Female-only (including Supernumerary)</option>
+                        <option value="Gender-Neutral">Gender-Neutral</option>
                         </select>
                         
 
                         <br><br>
                         <label for="category"><div class="family">Category</div></label>
                         <select name="category">
-                        <option value="Open">Open</option>
+                        <option value="OPEN">OPEN</option>
                         <option value="OBC-NCL">OBC-NCL</option>
                         <option value="SC">SC</option>
                         <option value="ST">ST</option>
-                        <option value="Open (PwD)">Open (PwD)</option>
+                        <option value="EWS">EWS</option>
+                        <option value="EWS (PwD)">EWS (PwD)</option>
+                        <option value="OPEN (PwD)">Open (PwD)</option>
                         <option value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
                         <option value="SC (PwD)">SC (PwD)</option>
                         <option value="ST (PwD)">ST (PwD)</option>

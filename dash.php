@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>                       <!-- http://kenwheeler.github.io/slick/ -->
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
     <link rel="stylesheet" href="css/tooplate-style.css">                               <!-- Templatemo style -->
-    <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <link rel="stylesheet" type="text/css" href="css/css_login.css">
     <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
     
 </head>
@@ -91,7 +91,7 @@
                 
             <fieldset style = "width: 60vw; margin:4vw 20vw ">
                     <form method="post" action='#'>
-                    <button  name="aaa" class="submit family"><a href="index.php" class="white">Go back to home page</a></button><br>
+                    <button  name="aaa" class="btn logout"><a href="index.php" class="white">Go back to home page</a></button><br>
                         <div class="container">
                           <h2 id='heading' class="family">Preferences</h2><br>
                           <!-- <form method="POST"><button type="submit" name="refresh" class="submit">Refresh</button></form> -->

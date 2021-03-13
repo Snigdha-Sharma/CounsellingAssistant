@@ -57,7 +57,8 @@
                 // checking passwords
                 if($psw==$psw2){
                     //   echo $psw;
-                $query="INSERT INTO userlogin(Username, Password) VALUES ('$user','$psw')";
+                $hashed_password = password_hash($psw, PASSWORD_DEFAULT);
+                $query="INSERT INTO userlogin(Username, Password) VALUES ('$user','$hashed_password')";
                 // echo $query;
                 if(mysqli_query($con, $query))
                 {
