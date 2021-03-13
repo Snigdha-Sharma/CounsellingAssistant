@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
+-- Generation Time: Mar 13, 2021 at 09:03 AM
+=======
 -- Generation Time: Mar 13, 2021 at 08:14 AM
+>>>>>>> 47184aa2e5f1d47d86cca1bb8ec53d27becc647a
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -75,7 +79,11 @@ INSERT INTO `branches` (`branch_id`, `Name`, `program_id`) VALUES
 (6, 'Ceramic Engineering', 1),
 (7, 'Chemical Engineering', 1),
 (8, 'Chemical Science and Technology', 1),
+<<<<<<< HEAD
+(9, 'Production Engineering', 1),
+=======
 (9, 'Computer Science and Engineering', 1),
+>>>>>>> 47184aa2e5f1d47d86cca1bb8ec53d27becc647a
 (10, 'Computer Science and Engineering', 1),
 (11, 'Exploration Geophysics', 6),
 (12, 'Civil Engineering', 1),
@@ -122,13 +130,42 @@ CREATE TABLE `institutes` (
   `institute_id` int(255) NOT NULL,
   `Name` varchar(10000) NOT NULL,
   `Type` varchar(100) NOT NULL,
+<<<<<<< HEAD
+  `state_id` int(255) DEFAULT NULL,
+  `placement_ranking` int(100) DEFAULT NULL
+=======
   `state_id` int(255) DEFAULT NULL
+>>>>>>> 47184aa2e5f1d47d86cca1bb8ec53d27becc647a
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `institutes`
 --
 
+<<<<<<< HEAD
+INSERT INTO `institutes` (`institute_id`, `Name`, `Type`, `state_id`, `placement_ranking`) VALUES
+(1, 'Dr. B R Ambedkar National Institute of Technology, Jalandhar', 'NIT', 20, 10),
+(2, 'Motilal Nehru National Institute of Technology Allahabad', 'NIT', 27, 4),
+(3, 'Malaviya National Institute of Technology Jaipur', 'NIT', 21, 5),
+(4, 'Maulana Azad National Institute of Technology Bhopal', 'NIT', 13, 9),
+(5, 'National Institute of Technology Agartala', 'NIT', 25, 11),
+(6, 'Indian Institute of Technology Bhubaneswar', 'IIT', 19, 8),
+(7, 'Indian Institute of Technology Bombay', 'IIT', 14, 1),
+(8, 'Indian Institute of Technology Mandi', 'IIT', 9, 3),
+(9, 'Indian Institute of Technology Delhi', 'IIT', 32, 2),
+(10, 'Indian Institute of Technology Indore', 'IIT', 13, 7),
+(11, 'Atal Bihari Vajpayee Indian Institute of Information Technology & Management Gwalior', 'IIIT', 13, 14),
+(12, 'Indian Institute of Information Technology(IIIT) Una, Himachal Pradesh', 'IIIT', 9, 13),
+(13, 'Indian Institute of Information Technology(IIIT), Vadodara, Gujrat', 'IIIT', 7, 15),
+(14, 'Indian Institute of Information Technology, Allahabad', 'IIIT', 27, 6),
+(15, 'Indian Institute of Information Technology, Design & Manufacturing, Kancheepuram', 'IIIT', 23, 17),
+(16, 'Birla Institute of Technology, Mesra, Ranchi', 'GFTI', 10, 16),
+(17, 'Punjab Engineering College, Chandigarh', 'GFTI', 20, 18),
+(18, 'Institute of Infrastructure, Technology, Research and Management-Ahmedabad', 'GFTI', 7, 19),
+(19, 'Mizoram University, Aizawl', 'GFTI', 17, 20),
+(20, 'School of Engineering, Tezpur University, Napaam, Tezpur', 'GFTI', 3, 21),
+(21, 'National Institute of Technology Raipur', 'NIT', 5, 12);
+=======
 INSERT INTO `institutes` (`institute_id`, `Name`, `Type`, `state_id`) VALUES
 (1, 'Dr. B R Ambedkar National Institute of Technology, Jalandhar', 'NIT', 20),
 (2, 'Motilal Nehru National Institute of Technology Allahabad', 'NIT', 27),
@@ -151,6 +188,7 @@ INSERT INTO `institutes` (`institute_id`, `Name`, `Type`, `state_id`) VALUES
 (19, 'Mizoram University, Aizawl', 'GFTI', 17),
 (20, 'School of Engineering, Tezpur University, Napaam, Tezpur', 'GFTI', 3),
 (21, 'National Institute of Technology Raipur', 'NIT', 5);
+>>>>>>> 47184aa2e5f1d47d86cca1bb8ec53d27becc647a
 
 -- --------------------------------------------------------
 
@@ -246,7 +284,41 @@ INSERT INTO `rankings` (`SNo`, `opening_rank`, `closing_rank`, `institute_id`, `
 (25, 37552, 50331, 16, 4, 3, 1, 1),
 (26, 8755, 9090, 16, 4, 3, 9, 1),
 (27, 9862, 11516, 16, 4, 3, 5, 1),
+<<<<<<< HEAD
+(28, 6901, 13419, 16, 4, 3, 7, 1),
+(29, 1490, 3770, 2, 10, 3, 1, 1),
+(30, 5356, 8841, 2, 10, 3, 1, 2),
+(31, 19, 54, 2, 10, 3, 2, 1),
+(32, 253, 253, 2, 10, 3, 2, 2),
+(33, 604, 721, 2, 10, 3, 9, 1),
+(34, 1437, 1745, 2, 10, 3, 9, 2),
+(35, 671, 1551, 2, 10, 3, 3, 1),
+(36, 2114, 4548, 2, 10, 3, 3, 2),
+(37, 36, 36, 2, 10, 3, 4, 1),
+(38, 283, 283, 2, 10, 3, 4, 2),
+(39, 60, 881, 2, 10, 3, 5, 2),
+(40, 1093, 1526, 2, 10, 3, 5, 2),
+(41, 36, 36, 2, 10, 3, 6, 1),
+(42, 256, 1263, 2, 10, 3, 7, 1),
+(43, 1430, 1430, 2, 10, 3, 7, 2),
+(44, 783, 2613, 2, 10, 2, 1, 1),
+(45, 4613, 5844, 2, 10, 2, 1, 2),
+(46, 59, 59, 2, 10, 2, 2, 1),
+(47, 358, 463, 2, 10, 2, 9, 1),
+(48, 1076, 1076, 2, 10, 2, 9, 2),
+(49, 68, 68, 2, 10, 2, 10, 2),
+(50, 575, 1064, 2, 10, 2, 3, 1),
+(51, 1556, 3159, 2, 10, 2, 3, 2),
+(52, 75, 75, 2, 10, 2, 4, 1),
+(53, 372, 720, 2, 10, 2, 5, 1),
+(54, 1275, 1318, 2, 10, 2, 5, 2),
+(55, 86, 86, 2, 10, 2, 6, 2),
+(56, 233, 346, 2, 10, 2, 7, 1),
+(57, 496, 496, 2, 10, 2, 7, 2),
+(58, 10, 10, 2, 10, 2, 8, 1);
+=======
 (28, 6901, 13419, 16, 4, 3, 7, 1);
+>>>>>>> 47184aa2e5f1d47d86cca1bb8ec53d27becc647a
 
 -- --------------------------------------------------------
 
