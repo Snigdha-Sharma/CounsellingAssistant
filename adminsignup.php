@@ -18,18 +18,89 @@
 </head>
 
 <body>
+<?php
+    include("dbconnect.php");
+    $con = Openconn();
+    session_start();
+    if(isset($_SESSION["user"]) &&  $_SESSION['loggedin'] == true)
+    {
+        header('Location: admin-index.php');
+    }
+    // $con = mysqli_connect("localhost","root","","counselling");
+    // 	if(mysqli_connect_errno($con))
+    // 	{
+    // 		echo mysqli_connect_error();
+    // 	}
+    
+    if(isset($_POST['signup'])) //button if clicked
+    {
+        $user= $_POST['user'];
+        $psw=$_POST['psw'];
+        $psw2=$_POST['psw-repeat'];
+        $uniquekey=$_POST['uniqueid'];
+
+        // checking for already existing username
+        $sql = "SELECT * FROM adminlogin WHERE UserName='$_POST[user]'";
+
+        if(!$qsql = mysqli_query($con,$sql))
+        {
+            echo mysqli_error($con);
+        }
+        else
+        {
+            if(mysqli_num_rows($qsql)==1)
+            {
+                // header('refresh');
+                echo "<script>alert('Username already exists. Try a different name.')</script>";
+            }
+            else
+            {
+                // checking passwords
+                if($psw==$psw2 && $uniquekey=="MNNIT"){
+                    //   echo $psw;
+                $query="INSERT INTO adminlogin(UserName, Password) VALUES ('$user','$psw')";
+                // echo $query;
+                if(mysqli_query($con, $query))
+                {
+                    // echo $psw;
+                    // session_destroy();
+                    
+                    $_SESSION["user"] = $user;
+                    $_SESSION['loggedin'] = true;
+                    header('location: http://localhost/admin-index.php', true, 307); 
+                    exit();
+                }
+                else
+                {
+                    echo $user;
+                    echo $query;
+                    // session_destroy();
+                    // header('location: http://localhost/adminsignup.php', true, 307);
+                    // echo $con;
+                    // exit();
+                }
+                }
+                else{
+                    echo "Passwords do not match. Try again.";
+                }
+            	// echo "<script>alert('Invalid Login ID and password entered...')</script>";	
+            }
+        }
+    }
+?>
+
     <div id="tm-bg"></div>
     <!-- <div id="tm-wrap">
         <div class="tm-main-content"> -->
             <!-- <div class="container tm-site-header-container"> -->
                 
                 <fieldset style = "width: 45vw; margin:5vw 25vw ">
-                    <form action="" method="post">
+                    <form action="#" method="post">
                         <div class="container">
                           <h2 id='heading' class="family">Admin Sign Up</h2><br>
                       
-                          <label for="email"><div class="family">Registration no.</div></label><br>
-                          <input type="text" placeholder="Enter Reg no." name="email" required>
+                          <label for="user"><div class="family">Username</div></label><br>
+                          <input type="text" placeholder="Enter Username" name="user" required>
                       <br><br>
                           <label for="psw"><div class="family">Password</div></label>
                           <input type="password" placeholder="Enter Password" name="psw" required>
@@ -43,7 +114,7 @@
                       
                           <div class="clearfix"><br>
                             
-                            <button type="submit" name="Upload" class="submit family">Sign Up</button>
+                            <button type="submit" name="signup" class="submit family">Sign Up</button>
                           </div>
                           <div>
                             <div class="align"><br>Go back to<a href="login.php"> login page </a></div>

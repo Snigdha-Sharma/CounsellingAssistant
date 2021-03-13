@@ -18,6 +18,74 @@
 </head>
 
 <body>
+
+<?php
+    include("dbconnect.php");
+    $con = Openconn();
+    if(isset($_SESSION["user"]) &&  $_SESSION['loggedin'] == true)
+    {
+        header('Location: index.php');
+    }
+    // $con = mysqli_connect("localhost","root","","counselling");
+    // 	if(mysqli_connect_errno($con))
+    // 	{
+    // 		echo mysqli_connect_error();
+    // 	}
+    if(isset($_POST['signup'])) //button if clicked
+    {
+        $user= $_POST['user'];
+        $psw=$_POST['psw'];
+        $psw2=$_POST['psw-repeat'];
+
+
+        // checking for already existing username
+        $sql = "SELECT * FROM userlogin WHERE Username='$_POST[user]'";
+
+        if(!$qsql = mysqli_query($con,$sql))
+        {
+            echo mysqli_error($con);
+        }
+        else
+        {
+            if(mysqli_num_rows($qsql)==1)
+            {
+                // header('refresh');
+                echo "<script>alert('Username already exists. Try a different name.')</script>";
+            }
+            else
+            {
+                // checking passwords
+                if($psw==$psw2){
+                    //   echo $psw;
+                $query="INSERT INTO userlogin(Username, Password) VALUES ('$user','$psw')";
+                // echo $query;
+                if(mysqli_query($con, $query))
+                {
+                    // echo $psw;
+                    // session_destroy();
+                    session_start();
+                    $_SESSION["user"] = $user;
+                    $_SESSION['loggedin'] = true;
+                    header('location: http://localhost/userdetails.php', true, 307); 
+                    exit();
+                }
+                else
+                {
+                    session_destroy();
+                    header('location: http://localhost/signup.php', true, 307);
+                    // echo $con;
+                    exit();
+                }
+                }
+                else{
+                    echo "Passwords do not match. Try again.";
+                }
+            	// echo "<script>alert('Invalid Login ID and password entered...')</script>";	
+            }
+        }
+    }
+?>
+
     <div id="tm-bg"></div>
     <!-- <div id="tm-wrap">
         <div class="tm-main-content"> -->
@@ -88,44 +156,6 @@
         });
 
     </script>             
-
-<?php
-include("dbconnect.php");
-$con = Openconn();
-// $con = mysqli_connect("localhost","root","","counselling");
-// 	if(mysqli_connect_errno($con))
-// 	{
-// 		echo mysqli_connect_error();
-// 	}
-if(isset($_POST['signup'])) //button if clicked
-{
-  $user= $_POST['user'];
-  $psw=$_POST['psw'];
-  $psw2=$_POST['psw-repeat'];
-  if($psw==$psw2){
-    //   echo $psw;
-$query="INSERT INTO userlogin(Username, Password) VALUES ('$user','$psw')";
-// echo $query;
-if(mysqli_query($con, $query))
-{
-    echo $psw;
-    header('location: http://localhost/login.php', true, 307); 
-    exit();
-}
-else
-{
-    // header('location: http://localhost/signup.php', true, 307);
-    // echo $con;
-    exit();
-}
-  }
-  else{
-      echo "Passwords do not match. Try again.";
-  }
-}
-
-?>
-
 
 </body>
 </html>
