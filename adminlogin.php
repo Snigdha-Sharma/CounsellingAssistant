@@ -29,7 +29,7 @@ include("dbconnect.php");
 $con = Openconn();
 if(isset($_SESSION["user"]) &&  $_SESSION['loggedin'] == true)
 {
-	header('Location: index.php');
+	header('Location: admin-index.php');
 }
 
 function getUser()
@@ -40,7 +40,7 @@ function getUser()
 if(isset($_POST["submit"]))
 {
 	//if($_POST["usertype"]==1)
-	$sql = "SELECT * FROM userlogin WHERE Username='$_POST[user]' AND Password ='$_POST[psw]'";
+	$sql = "SELECT * FROM adminlogin WHERE UserName='$_POST[user]' AND Password ='$_POST[psw]'";
 
 	if(!$qsql = mysqli_query($con,$sql))
 	{
@@ -57,7 +57,7 @@ if(isset($_POST["submit"]))
 			// $_SESSION["password"] = $rs['Password'];			
 			//$_SESSION["user_type"] = $rs[type];
 			// echo $_SESSION["user"];
-			header('Location: index.php', true, 307);
+			header('Location: admin-index.php', true, 307);
     }
 		else
 		{
@@ -81,7 +81,7 @@ if(isset($_POST["submit"]))
                       </div> -->
                     
                       <div class="container">
-                             <div class="center family"><h2> Student's Login</h2><br></div>
+                             <div class="center family"><h2>Admin Login</h2><br></div>
                         <label for="user"><div class="family">Username</div></label>
                         <input type="text" size="4" placeholder="Enter Username" name="user" required>
                     
@@ -91,8 +91,8 @@ if(isset($_POST["submit"]))
                               <br><button name="submit" type="submit" class="submit family">Login</button>
                         </div>
                     <div class="align">
-                        <div class="family"><br>Not registered yet ? <a href="signup.php">Sign Up </a> <br>
-                        For Admin login, <a href="adminlogin.php">Click here </a> 
+                        <div class="family"><br>Not registered yet ? <a href="adminsignup.php">Sign Up </a> <br>
+                        For Student login, <a href="login.php">Click here </a> 
                         </div>
                     
                       </div>
@@ -139,7 +139,4 @@ if(isset($_POST["submit"]))
     </script>             
 
 </body>
-
-
-
 </html>
