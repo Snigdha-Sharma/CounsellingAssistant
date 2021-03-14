@@ -49,13 +49,6 @@
         $_SESSION['br4']=isset($_POST['br4']) ? 1 : 0;
         $_SESSION['br5']=isset($_POST['br5']) ? 1 : 0;
 
-        $_SESSION['r1']=isset($_POST['r1']) ? 1 : 0;
-        $_SESSION['r2']=isset($_POST['r2']) ? 1 : 0;
-        $_SESSION['r3']=isset($_POST['r3']) ? 1 : 0;
-        $_SESSION['r4']=isset($_POST['r4']) ? 1 : 0;
-        $_SESSION['r5']=isset($_POST['r5']) ? 1 : 0;
-        $_SESSION['r6']=isset($_POST['r6']) ? 1 : 0;
-
         $_SESSION['ov1']=isset($_POST['ov1']) ? 1 : 0;
         $_SESSION['ov2']=isset($_POST['ov2']) ? 1 : 0;
         $_SESSION['ov3']=isset($_POST['ov3']) ? 1 : 0;
@@ -216,7 +209,7 @@
                         <?php   // LOOP TILL END OF DATA  
                         // if(isset($_POST['branch']))
                         // {
-                            $var=1;
+                            
                             $sql = "SELECT branch_id, Name FROM branches ";
                             $result = $con->query($sql);
                             // $conn->close();
@@ -239,13 +232,13 @@
                         </table>
                         <br>
 
-                        <p>Fill in your region preferences using region numbers:</p>
+                        <!-- <p>Fill in your region preferences using region numbers:</p> -->
                         <!-- <p>For example: If your branch preference is 1) Civil Engineering and 2) Bio Technology, then
                         you will fill the blank as: 12 4</p> -->
                         
                         <!-- <button type="submit" name="reg" class="submit">Show Region numbers:</button> -->
                         <!-- <br><br> -->
-                        <input type="number" id="region" name="r1" min="1" max="6">
+                        <!-- <input type="number" id="region" name="r1" min="1" max="6">
                         <label for="region">Pref 1</label>&nbsp;&nbsp;&nbsp;
                         
                         <input type="number" id="region" name="r2" min="1" max="6">
@@ -288,7 +281,7 @@
                         // }
                         ?> 
                         </table>
-                        <br>
+                        <br> -->
 
                         <p>Fill in your general preferences using 1-6 numbers, 1 -> most preferred, 6->least preferred:</p>
                         <!-- <p>For example: If your branch preference is 1) Civil Engineering and 2) Bio Technology, then

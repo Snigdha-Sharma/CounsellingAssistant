@@ -18,59 +18,6 @@
 </head>
 
 <body>
-<?php
-include("dbconnect.php");
-// echo $abc;
-// $con=mysqli_connect("localhost","root","","counselling");
-// if(mysqli_connect_errno($con))
-// {
-//     echo mysqli_connect_error();
-// }
-$con = Openconn();
-if(isset($_SESSION["user"]) &&  $_SESSION['loggedin'] == true)
-{
-	header('Location: index.php');
-}
-
-// function getUser()
-// {
-//     return $user;
-// }
-
-if(isset($_POST["submit"]))
-{
-	//if($_POST["usertype"]==1)
-    $users=$_POST["user"];
-    $psw=$_POST["psw"];
-    // $hashed_password = password_hash($psw, PASSWORD_DEFAULT);
-	$sql = "SELECT * FROM userlogin WHERE Username='$users' AND Password ='$psw';";
-
-	if(!$qsql = mysqli_query($con,$sql))
-	{
-		echo mysqli_error($con);
-	}
-	else
-	{
-		if(mysqli_num_rows($qsql)==1)
-		{
-			session_start();
-			$rs = mysqli_fetch_array($qsql);
-            // $psww = $rs[1];
-			$_SESSION["user"] = $rs['Username'];
-            $_SESSION['loggedin'] = true;			
-			// $_SESSION["password"] = $rs['Password'];			
-			//$_SESSION["user_type"] = $rs[type];
-			// echo $_SESSION["user"];
-			header('Location: index.php', true, 307);
-    }
-		else
-		{
-            // echo $_SESSION["user"];
-			echo "<script>alert('Invalid Login ID and password entered...')</script>";	
-		}
-	}
-}
-?>
     <div id="tm-bg"></div>
     <!-- <div id="tm-wrap">
         <div class="tm-main-content"> -->
@@ -85,9 +32,9 @@ if(isset($_POST["submit"]))
                       </div> -->
                     
                       <div class="container">
-                             <div class="center family"><h2> Student's Login</h2><br></div>
-                        <label for="user"><div class="family">Username</div></label>
-                        <input type="text" size="4" placeholder="Enter Username" name="user" required>
+                             <div class="center family"><h2>Admin Login</h2><br></div>
+                        <label for="uname"><div class="family">Username</div></label>
+                        <input type="text" size="4" placeholder="Enter Username" name="x" required>
                     
                         <label for="psw"><div class="family">Password</div></label>
                         <input type="password" placeholder="Enter Password" name="psw" required>
@@ -95,8 +42,8 @@ if(isset($_POST["submit"]))
                               <br><button name="submit" type="submit" class="submit family">Login</button>
                         </div>
                     <div class="align">
-                        <div class="family"><br>Not registered yet ? <a href="signup.php">Sign Up </a> <br>
-                        For Admin login, <a href="adminlogin.php">Click here </a> 
+                        <div class="family"><br>Not registered yet ? <a href="signup1.php">Sign Up </a> <br>
+                        For Student login, <a href="teacher.php">Click here </a> 
                         </div>
                     
                       </div>
@@ -143,7 +90,4 @@ if(isset($_POST["submit"]))
     </script>             
 
 </body>
-
-
-
 </html>

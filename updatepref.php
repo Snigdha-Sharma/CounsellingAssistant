@@ -197,7 +197,7 @@ if($_SESSION['chk2']){
             $regionid=$rs[0];
         }
     }
-    echo $regionid;
+    // echo $regionid;
     $allinst = "CREATE TABLE allinstate Select institute_id as istdd from institutes, states where institutes.state_id = states.state_id and states.state_id='$regionid';";
     $con->query($allinst);
     $allinst = "CREATE TABLE FILTER5 select * from FILTER4, allinstate where FILTER4.institute_id=allinstate.istdd;";
@@ -249,7 +249,34 @@ if($_SESSION['chk5']){
     $con->query($sql);
 }
 
+// --------------------------------------------FILTER 6 ends--------------------------------------------------------
+// $sql = "ALTER TABLE filter6 ADD COLUMN branchp int(10);";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET branchp=5 WHERE branch_id='$_SESSION['br1']';";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET branchp=4 WHERE branch_id='$_SESSION['br2']';";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET branchp=3 WHERE branch_id='$_SESSION['br3']';";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET branchp=2 WHERE branch_id='$_SESSION['br4']';";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET branchp=1 WHERE branch_id='$_SESSION['br5']';";
+// $con->query($sql);
 
+// $sql = "ALTER TABLE filter ADD COLUMN regionsp int (10);";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET regionsp=1 WHERE region_id='$_SESSION['r6']'";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET regionsp=2 WHERE region_id='$_SESSION['r5']'";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET regionsp=3 WHERE region_id='$_SESSION['r4']'";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET regionsp=4 WHERE region_id='$_SESSION['r3']'";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET regionsp=5 WHERE region_id='$_SESSION['r2']'";
+// $con->query($sql);
+// $sql = "UPDATE filter6 SET regionsp=6 WHERE region_id='$_SESSION['r1']'";
+// $con->query($sql);
 
 ?>
 
@@ -263,7 +290,65 @@ if($_SESSION['chk5']){
                     <form method="post" action='#'>
                     <button  name="aaa" class="btn logout"><a href="index.php" class="white">Go back to home page</a></button><br>
                         <div class="container">
-                          <h2 id='heading' class="family">Preferences</h2><br>
+                          <h2 id='heading' class="family">Sample List</h2><br>
+                          <table border="1">
+                          <?php   // LOOP TILL END OF DATA  
+                        // if(isset($_POST['branch']))
+                        // {
+                            
+                            $sql = "SELECT institute_id, branch_id FROM filter6";
+                            $result = $con->query($sql);
+                            // $conn->close();
+                            while($rows=$result->fetch_assoc()) 
+                            { 
+                        ?> 
+                        <tr> 
+                            <!--FETCHING DATA FROM EACH  
+                                ROW OF EVERY COLUMN--> 
+                                <?php
+                                $r1 = $rows['institute_id'];
+                                $r2 = $rows['branch_id'];
+                                $r11=""; $r22="";
+                                    $sql1 = "SELECT Name FROM institutes WHERE institute_id='$r1';";
+                                    if(!$sql1 = mysqli_query($con,$sql1))
+                                    {
+                                        echo mysqli_error($con);
+                                    }
+                                    else
+                                    {
+                                        if(mysqli_num_rows($sql1)==1)
+                                        {
+                                            $rs = mysqli_fetch_array($sql1);
+                                            $r11=$rs[0];
+                                        }
+                                    }
+
+                                    $sql2 = "SELECT Name FROM branches WHERE branch_id='$r2';";
+                                    if(!$sql2 = mysqli_query($con,$sql2))
+                                    {
+                                        echo mysqli_error($con);
+                                    }
+                                    else
+                                    {
+                                        if(mysqli_num_rows($sql2)==1)
+                                        {
+                                            $rs = mysqli_fetch_array($sql2);
+                                            $r22=$rs[0];
+                                        }
+                                    }
+                                ?>
+
+                            <td>&nbsp;&nbsp;<?php echo $r11;?>&nbsp;</td>  
+                            <td> <td>
+                            <td>&nbsp;&nbsp;<?php echo $r22;?>&nbsp;&nbsp;</td> 
+                            
+                        </tr> 
+                        <?php 
+                            }
+                            // header('Location: choicefill.php', true, 307);
+                        // }
+                        ?> 
+                        </table>
                          
     <!-- </div> -->
     <!-- load JS -->
