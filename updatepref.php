@@ -250,33 +250,73 @@ if($_SESSION['chk5']){
 }
 
 // --------------------------------------------FILTER 6 ends--------------------------------------------------------
-// $sql = "ALTER TABLE filter6 ADD COLUMN branchp int(10);";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET branchp=5 WHERE branch_id='$_SESSION['br1']';";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET branchp=4 WHERE branch_id='$_SESSION['br2']';";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET branchp=3 WHERE branch_id='$_SESSION['br3']';";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET branchp=2 WHERE branch_id='$_SESSION['br4']';";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET branchp=1 WHERE branch_id='$_SESSION['br5']';";
-// $con->query($sql);
+$sql = "ALTER TABLE filter6 ADD COLUMN branchp int(10);";
+$con->query($sql);
+$abc1 = $_SESSION['br1'];
+$abc2 = $_SESSION['br2'];
+$abc3 = $_SESSION['br3'];
+$abc4 = $_SESSION['br4'];
+$abc5 = $_SESSION['br5'];
 
-// $sql = "ALTER TABLE filter ADD COLUMN regionsp int (10);";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET regionsp=1 WHERE region_id='$_SESSION['r6']'";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET regionsp=2 WHERE region_id='$_SESSION['r5']'";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET regionsp=3 WHERE region_id='$_SESSION['r4']'";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET regionsp=4 WHERE region_id='$_SESSION['r3']'";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET regionsp=5 WHERE region_id='$_SESSION['r2']'";
-// $con->query($sql);
-// $sql = "UPDATE filter6 SET regionsp=6 WHERE region_id='$_SESSION['r1']'";
-// $con->query($sql);
+// echo $abc1;
+// echo $abc2;
+// echo $abc3;
+$sql = "UPDATE filter6 SET branchp=0;";
+$con->query($sql);
+$sql = "UPDATE filter6 SET branchp=5 WHERE branch_id='$abc1';";
+$con->query($sql);
+$sql = "UPDATE filter6 SET branchp=4 WHERE branch_id='$abc2';";
+$con->query($sql);
+$sql = "UPDATE filter6 SET branchp=3 WHERE branch_id='$abc3';";
+$con->query($sql);
+$sql = "UPDATE filter6 SET branchp=2 WHERE branch_id='$abc4';";
+$con->query($sql);
+$sql = "UPDATE filter6 SET branchp=1 WHERE branch_id='$abc5';";
+$con->query($sql);
+
+$r1=$_SESSION['region1'];
+$r2=$_SESSION['region2'];
+$r3=$_SESSION['region3'];
+$r4=$_SESSION['region4'];
+$r5=$_SESSION['region5'];
+$r6=$_SESSION['region6'];
+
+// echo $r1;
+// echo $r2;
+$sql = "ALTER TABLE filter6 ADD COLUMN region_id int(10);";
+$con->query($sql);
+$sql = "UPDATE filter6 SET region_id = (SELECT region_id from states, institutes where states.state_id=institutes.state_id;";
+
+$sql = "ALTER TABLE filter6 ADD COLUMN regionsp int(10);";
+$con->query($sql);
+$sql = "UPDATE filter6 SET regionsp=1 WHERE region_id='$r6'";
+$con->query($sql);
+$sql = "UPDATE filter6 SET regionsp=2 WHERE region_id='$r5'";
+$con->query($sql);
+$sql = "UPDATE filter6 SET regionsp=3 WHERE region_id='$r4'";
+$con->query($sql);
+$sql = "UPDATE filter6 SET regionsp=4 WHERE region_id='$r3'";
+$con->query($sql);
+$sql = "UPDATE filter6 SET regionsp=5 WHERE region_id='$r2'";
+$con->query($sql);
+$sql = "UPDATE filter6 SET regionsp=6 WHERE region_id='$r1'";
+$con->query($sql);
+
+$sql = "ALTER TABLE filter6 ADD COLUMN yoestd int(10);";
+$con->query($sql);
+$sql = "UPDATE filter6 SET yoestd=(SELECT year_of_establishment from institutes where institutes.institute_id=filter6.institute_id)";
+$con->query($sql);
+
+$sql = "ALTER TABLE filter6 ADD COLUMN placerank int(10);";
+$con->query($sql);
+$sql = "UPDATE filter6 SET placerank=(SELECT placement_ranking from institutes where institutes.institute_id=filter6.institute_id)";
+$con->query($sql);
+
+$sql = "ALTER TABLE filter6 ADD COLUMN camprat int(10);";
+$con->query($sql);
+$sql = "UPDATE filter6 SET camprat=(SELECT campus_ratings from institutes where institutes.institute_id=filter6.institute_id)";
+$con->query($sql);
+
 
 ?>
 
@@ -296,7 +336,7 @@ if($_SESSION['chk5']){
                         // if(isset($_POST['branch']))
                         // {
                             
-                            $sql = "SELECT institute_id, branch_id FROM filter6";
+                            $sql = "SELECT institute_id, branch_id FROM filter6 ORDER BY branchp DESC, regionsp DESC, yoestd, placerank, camprat DESC";
                             $result = $con->query($sql);
                             // $conn->close();
                             while($rows=$result->fetch_assoc()) 
@@ -336,6 +376,12 @@ if($_SESSION['chk5']){
                                             $r22=$rs[0];
                                         }
                                     }
+                                    $myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
+                                    fwrite($myfile, $r11);
+                                    fwrite($myfile, " ");
+                                    fwrite($myfile, $r22);
+                                    fwrite($myfile, "\n");
+                                    fclose($myfile);
                                 ?>
 
                             <td>&nbsp;&nbsp;<?php echo $r11;?>&nbsp;</td>  
@@ -349,6 +395,8 @@ if($_SESSION['chk5']){
                         // }
                         ?> 
                         </table>
+                            
+                        <button  name="aaa" class="btn logout csss"><a href="newfile.txt" download="proposed_file_name">Download</a></button>
                          
     <!-- </div> -->
     <!-- load JS -->

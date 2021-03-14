@@ -43,7 +43,7 @@ if(isset($_POST["submit"]))
     $users=$_POST["user"];
     $psw=$_POST["psw"];
     // $hashed_password = password_hash($psw, PASSWORD_DEFAULT);
-	$sql = "SELECT * FROM userlogin WHERE Username='$users' AND Password ='$psw';";
+	$sql = "SELECT * FROM userlogin WHERE Username='$users' and Password='$psw';";
 
 	if(!$qsql = mysqli_query($con,$sql))
 	{
@@ -55,13 +55,17 @@ if(isset($_POST["submit"]))
 		{
 			session_start();
 			$rs = mysqli_fetch_array($qsql);
-            // $psww = $rs[1];
+            // $psww = $rs[0];
+
+            // if(psw_verify($psw, $hashed_password)){
+
 			$_SESSION["user"] = $rs['Username'];
             $_SESSION['loggedin'] = true;			
 			// $_SESSION["password"] = $rs['Password'];			
 			//$_SESSION["user_type"] = $rs[type];
 			// echo $_SESSION["user"];
 			header('Location: index.php', true, 307);
+            // }
     }
 		else
 		{

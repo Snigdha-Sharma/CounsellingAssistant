@@ -36,25 +36,25 @@
 
         $_SESSION['dur']=$_POST['dur'];
 
-        $_SESSION['region1']=isset($_POST['region1']) ? 1 : 0;
-        $_SESSION['region2']=isset($_POST['region2']) ? 1 : 0;
-        $_SESSION['region3']=isset($_POST['region3']) ? 1 : 0;
-        $_SESSION['region4']=isset($_POST['region4']) ? 1 : 0;
-        $_SESSION['region5']=isset($_POST['region5']) ? 1 : 0;
-        $_SESSION['region6']=isset($_POST['region6']) ? 1 : 0;
+        $_SESSION['region1']=($_POST['region1']);
+        $_SESSION['region2']=($_POST['region2']);
+        $_SESSION['region3']=($_POST['region3']);
+        $_SESSION['region4']=($_POST['region4']);
+        $_SESSION['region5']=($_POST['region5']);
+        $_SESSION['region6']=($_POST['region6']);
 
-        $_SESSION['br1']=isset($_POST['br1']) ? 1 : 0;
-        $_SESSION['br2']=isset($_POST['br2']) ? 1 : 0;
-        $_SESSION['br3']=isset($_POST['br3']) ? 1 : 0;
-        $_SESSION['br4']=isset($_POST['br4']) ? 1 : 0;
-        $_SESSION['br5']=isset($_POST['br5']) ? 1 : 0;
+        $_SESSION['br1']=($_POST['br1']);
+        $_SESSION['br2']=($_POST['br2']);
+        $_SESSION['br3']=($_POST['br3']);
+        $_SESSION['br4']=($_POST['br4']);
+        $_SESSION['br5']=($_POST['br5']);
 
-        $_SESSION['ov1']=isset($_POST['ov1']) ? 1 : 0;
-        $_SESSION['ov2']=isset($_POST['ov2']) ? 1 : 0;
-        $_SESSION['ov3']=isset($_POST['ov3']) ? 1 : 0;
-        $_SESSION['ov4']=isset($_POST['ov4']) ? 1 : 0;
-        $_SESSION['ov5']=isset($_POST['ov5']) ? 1 : 0;
-        $_SESSION['ov6']=isset($_POST['ov6']) ? 1 : 0;
+        // $_SESSION['ov1']=isset($_POST['ov1']) ? 1 : 0;
+        // $_SESSION['ov2']=isset($_POST['ov2']) ? 1 : 0;
+        // $_SESSION['ov3']=isset($_POST['ov3']) ? 1 : 0;
+        // $_SESSION['ov4']=isset($_POST['ov4']) ? 1 : 0;
+        // $_SESSION['ov5']=isset($_POST['ov5']) ? 1 : 0;
+        // $_SESSION['ov6']=isset($_POST['ov6']) ? 1 : 0;
         // echo $_SESSION['chk12'];
         // echo $_SESSION['chk1'];
         // echo $check_value;
@@ -161,7 +161,7 @@
 
 
 
-                        <p>Number the given regions from 1-6 according to your priority with 1 being the highest and 6 the lowest:</p>
+                        <p>Number the given regions from 1-6 according to your priority with 6 being the highest and 1 the lowest:</p>
 
                         <input type="number" id="region" name="region1" min="1" max="6">
                         <label for="region">North India</label>
@@ -258,35 +258,12 @@
                         <br>
                         
                         <table>
-                        <?php   // LOOP TILL END OF DATA  
-                        // if(isset($_POST['branch']))
-                        // {
-                            $sql = "SELECT * FROM regions ";
-                            $result = $con->query($sql);
-                            // $conn->close();
-                            while($rows=$result->fetch_assoc()) 
-                            { 
-                        ?> 
-                        <tr> 
-                            <!--FETCHING DATA FROM EACH  
-                                ROW OF EVERY COLUMN--> 
-                                <td><?php echo $rows['Region_Name'];?></td>
-                            <td><?php echo $rows['region_id'];?></td> 
-                            
-                            
-                        </tr> 
-                        <?php 
-                            }
-                            // header('Location: choicefill.php', true, 307);
-                        // }
-                        ?> 
-                        </table>
-                        <br> -->
+                        
 
-                        <p>Fill in your general preferences using 1-6 numbers, 1 -> most preferred, 6->least preferred:</p>
+                         <p>Fill in your general preferences using 1-6 numbers, 1 -> most preferred, 6->least preferred:</p> -->
                         <!-- <p>For example: If your branch preference is 1) Civil Engineering and 2) Bio Technology, then
                         you will fill the blank as: 12 4</p> -->
-                        
+<!--                         
                         <input type="number" id="region" name="ov1" min="1" max="6">
                         <label for="region">NIRF stats</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         
@@ -304,7 +281,7 @@
 
                         <input type="number" id="region" name="ov6" min="1" max="6">
                         <label for="region">How old the college is (alumni base)</label>
-                        <br>
+                        <br> -->
 
                      <button type="submit" name="submit" class="submit">Submit</button>
                      
