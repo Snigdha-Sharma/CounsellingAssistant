@@ -8,10 +8,10 @@ This project was made as a part of the hackathon of IIIT Allahabad, 'SheHacks 4.
 </p>
 
 ### **Technology Used:**
-<b>Front-End:</b>HTML,CSS,Javascript
-<b>Back-End:</b>PHP
-<b>Database:</b>MySQL
-<b>IDE:</b>Visual Studio Code
+<b>Front-End:</b>HTML,CSS,Javascript<br/>
+<b>Back-End:</b>PHP<br/>
+<b>Database:</b>MySQL<br/>
+<b>IDE:</b>Visual Studio Code<br/>
 
 ### **How To Run:**
 1. Run Apache and MySQL on Xampp.
